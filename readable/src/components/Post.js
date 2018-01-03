@@ -28,51 +28,50 @@ class Post extends Component {
       return(
         error || (id === undefined) ? <Error/> :
         <div className='content'>
-        {console.log(this.props.posts && this.props.posts[0] && this.props.posts[0].title)}
-        <div className='btns'>
-          <button
-            className='back'
-            onClick = {()=>this.props.path.push("/")} >
-            ← Back
-          </button>
-          <details>
-            <summary>Options</summary>
-            <div className='tooltip'>
-              <button onClick={() =>
-                this.voteUpdate(id, "upVote", 'post') }>
-                Vote Up
-              </button>
+          <div className='btns'>
+            <button
+              className='back'
+              onClick = {()=>this.props.path.push("/")} >
+              ← Back
+            </button>
+            <details>
+              <summary>Options</summary>
+              <div className='tooltip'>
+                <button onClick={() =>
+                  this.voteUpdate(id, "upVote", 'post') }>
+                  Vote Up
+                </button>
 
-              <button onClick={() =>
-                this.voteUpdate(id, "downVote", 'post') }>
-                Vote Down
-              </button>
-              <Link to = {`/posts/edit/${id}`}><button>Edit</button></Link>
+                <button onClick={() =>
+                  this.voteUpdate(id, "downVote", 'post') }>
+                  Vote Down
+                </button>
+                <Link to = {`/${category}/edit/${id}`}><button>Edit</button></Link>
 
-              <button onClick = {() =>
-                this.removePost()} >
-                Delete
-              </button>
-            </div>
-          </details>
-        </div>
-        <div className='img-container'/>
+                <button onClick = {() =>
+                  this.removePost()} >
+                  Delete
+                </button>
+              </div>
+            </details>
+          </div>
+          <div className='img-container'/>
 
-        <div>
-          <h2>{title}</h2>
-          <p className='details'>
-            Posted on {category} by {author} on {moment(timestamp).format('ll')}
-            · Vote Score {voteScore}
-          </p>
-          <p className='post-body'>{body}</p>
+          <div>
+            <h2>{title}</h2>
+            <p className='details'>
+              Posted on {category} by {author} on {moment(timestamp).format('ll')}
+               · Vote Score {voteScore}
+            </p>
+            <p className='post-body'>{body}</p>
 
-        </div>
+          </div>
 
-        <Comments
-          id = {this.props.id}
-          path = {this.props.path}
-          commentCount = {commentCount}
-        />
+          <Comments
+            id = {this.props.id}
+            path = {this.props.path}
+            commentCount = {commentCount}
+          />
         </div>
      )
    }

@@ -44,15 +44,18 @@ class New extends Component {
 
 
   handleAdd() {
-    const postData = this.state;
-    this.validate()
-    this.props.addPost(postData)
-    this.props.path.push("/")
+    const {title, body, category} = this.state
+    if(title && body && category !== ''){
+      const postData = this.state
+      this.props.addPost(postData)
+      this.props.path.push("/")
+    }
+    else {this.validate()}
  }
 
   render(){
     const {categories} = this.props
-    
+
     return (
       <div className='post-body'>
         <h2> New Post</h2>

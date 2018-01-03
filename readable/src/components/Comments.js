@@ -22,10 +22,16 @@ class Comments extends Component {
   }
 
   handlerAdd(){
+    if (this.state.body !== ''){
     this.setState({ id: uuid()})
     this.setState({ timeStamp: Date.now()})
     this.props.addComment(this.state)
-    .then(() => this.props.getComments(this.props.id))
+    .then(() => {
+      this.props.getComments(this.props.id)
+      this.setState({body: ''})
+      }
+    )
+  } else { alert('No data entered')}
   }
 
   componentDidMount(){
@@ -53,6 +59,7 @@ class Comments extends Component {
 
     return (
       <div>
+
         <div className='comment-input'>
           <input
             name='body'
@@ -73,6 +80,7 @@ class Comments extends Component {
             Submit
           </button>
         </div>
+        <p className='footer'>{comments.length} Comments</p>
         <div className='comment-container'>
           {comments.length > 0 && comments.map(comment =>
             <div className='comment' key={comment.id}>

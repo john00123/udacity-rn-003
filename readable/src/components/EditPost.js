@@ -8,9 +8,9 @@ class Edit extends Component {
   componentDidMount(){
     this.props.getPost(this.props.id).then(()=>
     this.setState({
-      title: this.props.posts.title,
-      body: this.props.posts.body,
-      category: this.props.posts.category
+      title: this.props.posts[0].title,
+      body: this.props.posts[0].body,
+      category: this.props.posts[0].category
     }))
   }
 
@@ -24,9 +24,9 @@ class Edit extends Component {
   }
 
   state = {
-    title: this.props.posts.title,
-    body: this.props.posts.body,
-    category: this.props.posts.category
+    title: this.props.posts[0].title,
+    body: this.props.posts[0].body,
+    category: this.props.posts[0].category
   }
 
   render(){

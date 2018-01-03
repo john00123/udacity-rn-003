@@ -26,13 +26,13 @@ class App extends Component {
         <Route exact path='/new'
           render = {({history}) => (< New path = { history }/> )}/>
 
-        <Route exact path='/posts/:id'
+        <Route exact path='/:category/:id'
           render = {({match, history}) => (<Post
           path = {history}
           id = {match.params.id}/>)}
         />
 
-        <Route exact path='/posts/edit/:id'
+        <Route exact path='/:category/edit/:id'
           render = {({match, history}) => (<Edit
           path = {history}
           id = {match.params.id}/>)}

@@ -19,11 +19,6 @@ class Posts extends Component {
 
   }
 
-  sortUpdate(){
-
-  }
-
-
   render(){
     const {posts, sortPosts} = this.props
     const imgUrl = `https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?auto=format&fit=crop&w=500&q=60`
@@ -47,15 +42,15 @@ class Posts extends Component {
         </div>
 
         {posts.length > 0 && posts.map((post) =>
-          <div className='post'key={post.id}>
+          <div className='post' key = {post.id}>
             <img className='image' src={imgUrl} alt='lady with flowers'/>
 
             <div className='text'>
-              <Link to = {`/posts/${post.id}`} key = {post.id}>
+              <Link to = {`/${post.category}/${post.id}`} key = {post.id}>
                 <h3 className='title'>{post.title}</h3>
                 <p className='body'>{post.body}</p>
                 <p className='footer'>
-                  Published on {moment(post.timestamp).format('ll')}<br/><br/>
+                  Published on {moment(post.timestamp).format('ll')} by {post.author}<br/><br/>
                   {post.commentCount} Comments · Score {post.voteScore}
                 </p>
               </Link>
@@ -73,7 +68,7 @@ class Posts extends Component {
                     Vote Down
                   </button>
 
-                  <Link to = {`/posts/edit/${post.id}`}>
+                  <Link to = {`/${post.category}/edit/${post.id}`}>
                     <button>Edit</button>
                   </Link>
 
