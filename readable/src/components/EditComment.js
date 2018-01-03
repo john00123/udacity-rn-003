@@ -11,7 +11,7 @@ class EditC extends Component {
 
   handleAdd() {
     this.props.editComment(this.props.comments.id, this.state)
-    .then(()=> this.props.path.push(`/posts/${this.props.comments.parentId}`))
+    .then(()=> this.props.path.push(`/${this.props.category}/${this.props.comments.parentId}`))
   }
 
   handleChange(e) {

@@ -15,7 +15,12 @@ class Nav extends Component {
     return (
       <div className='master-header'>
         <header>
-          <h2> Readable </h2>
+          <Link to='/'
+          onClick = { ()=> this.props.fetchPosts() }
+          >
+            <h2> Readable </h2>
+          </Link>
+
           <Link to='/new'>
             <button>Create a Post</button>
           </Link>

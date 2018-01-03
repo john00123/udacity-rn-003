@@ -98,7 +98,7 @@ class Comments extends Component {
                 <button onClick={() => this.voteUpdate(comment.id, "downVote", 'comment') }> Vote Down
                 </button>
 
-                <button onClick={() => path.push(`/comments/${comment.id}`)}>
+                <button onClick={() => path.push(`/${this.props.category}/comments/${comment.id}`)}>
                   Edit
                 </button>
 

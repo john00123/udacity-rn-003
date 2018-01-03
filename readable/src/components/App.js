@@ -38,7 +38,7 @@ class App extends Component {
           id = {match.params.id}/>)}
         />
 
-        <Route exact path='/comments/:id'
+        <Route exact path='/:category/comments/:id'
           render = {({match, history}) => (<EditC
           path = {history}
           id = {match.params.id}/>)}
