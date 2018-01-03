@@ -3,21 +3,19 @@ import {
   GET_POST,
   ADD_POST,
   DELETE_POST,
-  SORT_POSTS } from '../actions/constants'
+  SORT_POSTS, VOTE } from '../actions/constants'
 import sortBy from 'sort-by'
 
 const posts = (state = {}, action) =>{
-  const {posts, post, option} = action
+  const {posts, post, option, id, score} = action
 
   switch(action.type){
     case RECEIVE_POSTS:
       return posts
 
     case GET_POST:
-      return {
-        ...state,
-        ...post
-      }
+      return [post]
+
 
     case ADD_POST:
       return {
@@ -26,11 +24,20 @@ const posts = (state = {}, action) =>{
       }
 
     case DELETE_POST:
+      return state.filter(post => post.id !== id)
+      // {
+      //   ...state,
+      //   posts: state.posts
+      // }
 
-      return{
-        ...state,
-        posts: state.posts
+    case VOTE:
+    return state.map(post => post.id === id ?
+      {
+        ...post,
+        voteScore : score
       }
+      : post )
+
 
     case SORT_POSTS :
       let sorted

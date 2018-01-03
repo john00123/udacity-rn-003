@@ -65,17 +65,18 @@ export const fetchPosts = (category) => (dispatch) => {
 
 // get post ----
 
-export const getPostAction = (post) => {
+export const getPostAction = (post, id) => {
   return {
     type: GET_POST,
-    post
+    post,
+    id
   }
 }
 
 export const getPost = (id) => (dispatch) => {
   return (
     ReadableAPI.getPost(id)
-    .then(postData => dispatch(getPostAction(postData)))
+    .then(postData => dispatch(getPostAction(postData, id)))
   )
 }
 
@@ -114,17 +115,18 @@ export const editPost = (id, post) => (dispatch) => {
 
 //delete post ---
 
-export const deletePostAction = (post) => {
+export const deletePostAction = (post, id) => {
   return {
     type: DELETE_POST,
-    post
+    post,
+    id
   }
 }
 
 export const deletePost = (id) => (dispatch) => {
   return (
     ReadableAPI.deletePost(id)
-    .then(post => dispatch(deletePostAction(post)))
+    .then(post => dispatch(deletePostAction(post, id)))
   )
 }
 

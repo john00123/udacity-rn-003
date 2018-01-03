@@ -8,7 +8,6 @@ class Posts extends Component {
 
   removePost(id){
     this.props.deletePost(id)
-    .then(() => this.props.fetchPosts(this.props.category) )
   }
 
   componentDidMount(){
@@ -17,7 +16,7 @@ class Posts extends Component {
 
   voteUpdate(id,option, type){
     this.props.vote(id,option, type)
-    .then(()=>this.props.fetchPosts(this.props.category))
+
   }
 
   sortUpdate(){

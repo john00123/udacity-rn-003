@@ -25,6 +25,7 @@ class Post extends Component {
   render(){
     const {title, author, voteScore, id, timestamp, commentCount, category, body, error} = this.props.posts
     return(
+      
       error || (id === undefined) ? <Error/> :
       <div className='content'>
         <div className='btns'>
@@ -76,7 +77,9 @@ class Post extends Component {
   }
 }
 
-const mapStateToProps = ({posts}) => ({posts})
+const mapStateToProps = ({posts}) => ({
+  posts
+})
 
 const mapDispatchToProps = (dispatch) => ({
   getPost: (id) => dispatch(getPost(id)),
