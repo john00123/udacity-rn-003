@@ -23,11 +23,12 @@ class Post extends Component {
   }
 
   render(){
-    const {title, author, voteScore, id, timestamp, commentCount, category, body, error} = this.props.posts
-    return(
-      
-      error || (id === undefined) ? <Error/> :
-      <div className='content'>
+    if(this.props.posts && this.props.posts[0]) {
+      const {title, author, voteScore, id, timestamp, commentCount, category, body, error} = this.props.posts[0]
+      return(
+        error || (id === undefined) ? <Error/> :
+        <div className='content'>
+        {console.log(this.props.posts && this.props.posts[0] && this.props.posts[0].title)}
         <div className='btns'>
           <button
             className='back'
@@ -72,8 +73,10 @@ class Post extends Component {
           path = {this.props.path}
           commentCount = {commentCount}
         />
-      </div>
-   )
+        </div>
+     )
+   }
+   return (<h1>Loading</h1>)
   }
 }
 

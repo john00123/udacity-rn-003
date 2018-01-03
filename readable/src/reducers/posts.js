@@ -6,7 +6,7 @@ import {
   SORT_POSTS, VOTE } from '../actions/constants'
 import sortBy from 'sort-by'
 
-const posts = (state = {}, action) =>{
+const posts = (state = [], action) =>{
   const {posts, post, option, id, score} = action
 
   switch(action.type){
